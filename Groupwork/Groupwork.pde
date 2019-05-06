@@ -28,7 +28,15 @@ public class LivingRock extends Rock implements Moveable {
     super(x,y);
   }
   void move() {
-    /* ONE PERSON WRITE THIS */
+    //remove prev circle.
+    fill(0,0,0);
+    ellipse(x,y,50,50);
+    
+    int[] dirs = {0,1,0,-1,1,0,-1,0};
+    boolean found = false; // has it found a valid direction to move in.
+    while (!found) {
+      
+    }
   }
 }
 
