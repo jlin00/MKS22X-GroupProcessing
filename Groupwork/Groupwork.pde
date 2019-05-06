@@ -39,8 +39,9 @@ class Ball extends Thing implements Displayable, Moveable {
   }
 
   void display() {
-    fill(255,0,0);
-    ellipse(x,y,20,20);
+    PImage img = loadImage("GolfBall.png");
+    img.resize(20,20);
+    image(img, x, y);
   }
 
   void move() {
