@@ -19,7 +19,8 @@ class Rock extends Thing implements Displayable{
   }
 
   void display() { 
-      /* ONE PERSON WRITE THIS */
+      fill(100,200,0);
+      ellipse(x, y, 50.0, 50.0);
   }
 }
 
