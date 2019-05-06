@@ -34,13 +34,19 @@ public class LivingRock extends Rock implements Moveable {
 }
 
 class Ball extends Thing implements Displayable, Moveable {
+  int num; 
   Ball(float x, float y) {
 
     super(x, y);
+    num = (int)(abs(random(4)));
   }
 
   void display() {
-    PImage img = loadImage("GolfBall.png");
+    PImage img; 
+    if (num == 0) img = loadImage("GolfBall.png");
+    if (num == 1) img = loadImage("SoccerBall.png");
+    if (num == 2) img = loadImage("BasketBall.png");
+    else img = loadImage("FootBall.png");
     img.resize(20,20);
     image(img, x, y);
   }
