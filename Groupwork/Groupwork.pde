@@ -32,10 +32,20 @@ public class LivingRock extends Rock implements Moveable {
     fill(0,0,0);
     ellipse(x,y,50,50);
     
+     
+     ArrayList<Integer> dirs = new ArrayList<Integer>();
+    
+     if (x!= 0) {
+       //add (-1,0) to move directions.
+       dirs.add(-1);
+       dirs.add(0);
+     }
+        
+    
     int[] dirs = {0,1,0,-1,1,0,-1,0};
     boolean found = false; // has it found a valid direction to move in.
     while (!found) {
-      
+      int r = (int) (Math.random() * 4);
     }
   }
 }
