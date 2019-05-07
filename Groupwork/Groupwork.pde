@@ -30,8 +30,6 @@ public class LivingRock extends Rock implements Moveable {
   }
   void move() {
     //remove prev circle.
-    fill(0,0,0);
-    ellipse(x,y,50,50);
     
      
      ArrayList<Integer> dirs = new ArrayList<Integer>();
@@ -40,14 +38,32 @@ public class LivingRock extends Rock implements Moveable {
        //add (-1,0) to move directions.
        dirs.add(-1);
        dirs.add(0);
+     } 
+     if (x!=width){
+       //add (1,0) to move directions.
+       dirs.add(1);
+       dirs.add(0);
      }
-        
+     if (y!=0){
+       //add (1,0) to move directions.
+       dirs.add(0);
+       dirs.add(-1);
+     }
+     if (y!=height){
+       //add (1,0) to move directions.
+       dirs.add(0);
+       dirs.add(1);
+     }
     
-    int[] dirs = {0,1,0,-1,1,0,-1,0};
-    boolean found = false; // has it found a valid direction to move in.
-    while (!found) {
-      int r = (int) (Math.random() * 4);
-    }
+      int r = (int) (Math.random() * (dirs.size()/2));
+      x += dirs.get(r);
+      y += dirs.get(r+1);
+    
+        fill(0,0,0);
+    ellipse(x,y,50,50);
+    
+    display();
+    
   }
 }
 
