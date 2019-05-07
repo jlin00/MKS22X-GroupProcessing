@@ -66,32 +66,28 @@ public class LivingRock extends Rock implements Moveable {
 }
 
 class Ball extends Thing implements Displayable, Moveable {
-  int num; 
-  int[][] moves;
-  int random;
-  int xMove;
-  int yMove;
+  float xspeed;
+  float yspeed;
+  int color1;
+  int color2;
+  int color3;
   Ball(float x, float y) {
     super(x, y);
-    moves = new int[][] {{-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}};
-    random = (int) random(8);
-    xMove = moves[random][0];
-    yMove = moves[random][1];
+    xspeed = random(-1,1);
+    yspeed = random(-1,1);
+    color1 = (int)random(255);
+    color2 = (int)random(255);
+    color3 = (int)random(255);
   }
 
   void display() {
-    PImage img; 
-    if (num == 0) img = loadImage("GolfBall.png");
-    if (num == 1) img = loadImage("SoccerBall.png");
-    if (num == 2) img = loadImage("BasketBall.png");
-    else img = loadImage("FootBall.png");
-    img.resize(20, 20);
-    image(img, x, y);
+    fill(color1,color2,color3);
+    ellipse(x,y,20,20);
   }
 
   void move() {
-    x += xMove;
-    y += yMove;
+    x += xspeed;
+    y += yspeed;
   }
 }
 
