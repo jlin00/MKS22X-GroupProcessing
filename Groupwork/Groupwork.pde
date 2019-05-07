@@ -34,11 +34,25 @@ public class LivingRock extends Rock implements Moveable {
 }
 
 class Ball extends Thing implements Displayable, Moveable {
+<<<<<<< HEAD
   int num; 
   Ball(float x, float y) {
 
     super(x, y);
     num = (int)(abs(random(4)));
+=======
+  int[][] moves;
+  int random;
+  int xMove;
+  int yMove;
+  Ball(float x, float y) {
+
+    super(x, y);
+    moves = new int[][] {{-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}};
+    random = (int) random(8);
+    xMove = moves[random][0];
+    yMove = moves[random][1];
+>>>>>>> 1168dc9dbe2c4b305bb2f20fe2d75d28af3f8902
   }
 
   void display() {
@@ -52,7 +66,8 @@ class Ball extends Thing implements Displayable, Moveable {
   }
 
   void move() {
-    /* ONE PERSON WRITE THIS */
+    x += xMove;
+    y += yMove;
   }
 }
 ArrayList<Displayable> thingsToDisplay;
