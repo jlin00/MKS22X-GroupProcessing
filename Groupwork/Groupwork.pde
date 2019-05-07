@@ -83,11 +83,13 @@ class Ball extends Thing implements Displayable, Moveable {
   void move() {
     x += xspeed;
     y += yspeed;
-    if (x >= 1000 || x <= 0){
+    if (x >= 975 || x <= 25){
       xspeed *= -1;
+      xspeed += random(-2,2);
     }
-    if (y >= 800 || y <= 0){
+    if (y >= 775 || y <= 25){
       yspeed *= -1;
+      yspeed += random(-2,2);
     }
   }
 }
