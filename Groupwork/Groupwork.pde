@@ -68,6 +68,13 @@ public class LivingRock extends Rock implements Moveable {
 }
 
 class Ball extends Thing implements Displayable, Moveable {
+<<<<<<< HEAD
+  int num; 
+  Ball(float x, float y) {
+
+    super(x, y);
+    num = (int)(abs(random(4)));
+=======
   int[][] moves;
   int random;
   int xMove;
@@ -79,10 +86,15 @@ class Ball extends Thing implements Displayable, Moveable {
     random = (int) random(8);
     xMove = moves[random][0];
     yMove = moves[random][1];
+>>>>>>> 1168dc9dbe2c4b305bb2f20fe2d75d28af3f8902
   }
 
   void display() {
-    PImage img = loadImage("GolfBall.png");
+    PImage img; 
+    if (num == 0) img = loadImage("GolfBall.png");
+    if (num == 1) img = loadImage("SoccerBall.png");
+    if (num == 2) img = loadImage("BasketBall.png");
+    else img = loadImage("FootBall.png");
     img.resize(20,20);
     image(img, x, y);
   }
