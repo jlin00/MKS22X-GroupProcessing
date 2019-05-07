@@ -57,11 +57,6 @@ public class LivingRock extends Rock implements Moveable {
     int r = (int) (Math.random() * (dirs.size()/2));
     x += dirs.get(r);
     y += dirs.get(r+1);
-
-    fill(0, 0, 0);
-    ellipse(x, y, 50, 50);
-
-    display();
   }
 }
 
