@@ -73,8 +73,8 @@ class Ball extends Thing implements Displayable, Moveable {
   int color3;
   Ball(float x, float y) {
     super(x, y);
-    xspeed = random(-1,1);
-    yspeed = random(-1,1);
+    xspeed = random(-3,3);
+    yspeed = random(-3,3);
     color1 = (int)random(255);
     color2 = (int)random(255);
     color3 = (int)random(255);
@@ -82,12 +82,18 @@ class Ball extends Thing implements Displayable, Moveable {
 
   void display() {
     fill(color1,color2,color3);
-    ellipse(x,y,20,20);
+    ellipse(x,y,50,50);
   }
 
   void move() {
     x += xspeed;
     y += yspeed;
+    if (x >= 1000 || x <= 0){
+      xspeed *= -1;
+    }
+    if (y >= 800 || y <= 0){
+      yspeed *= -1;
+    }
   }
 }
 
