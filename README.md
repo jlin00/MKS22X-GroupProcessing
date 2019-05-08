@@ -23,4 +23,4 @@ Devin + Jackie:
 
 Lauren + Aryan: 
 - added image code to rock's constructor- the image loads fast enough now and the rock moves.
-- 
+- // spent a whole period on this because the code was lost on github
