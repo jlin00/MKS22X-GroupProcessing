@@ -14,13 +14,17 @@ class Thing {
 }
 
 class Rock extends Thing implements Displayable {
+  PImage img;
   Rock(float x, float y) {
     super(x, y);
+    int n = (int)random(2);
+    if (n==1) img = loadImage("rock.png");
+    else img = loadImage("rock2.png");
+    img.resize(40,40);
   }
 
-  void display() { 
-    fill(100, 200, 0);
-    ellipse(x, y, 50.0, 50.0);
+  void display() {
+    image(img, x,y);
   }
 }
 
@@ -31,24 +35,25 @@ public class LivingRock extends Rock implements Moveable {
   void move() {
     //remove prev circle.
 
+    // RANDOM MOVEMENT
     ArrayList<Integer> dirs = new ArrayList<Integer>();
 
-    if (x> 0) {
+    if (x > 25) {
       //add (-1,0) to move directions.
       dirs.add(-1);
       dirs.add(0);
     } 
-    if (x<width) {
+    if (x<975) {
       //add (1,0) to move directions.
       dirs.add(1);
       dirs.add(0);
     }
-    if (y>0) {
+    if (y>25) {
       //add (1,0) to move directions.
       dirs.add(0);
       dirs.add(-1);
     }
-    if (y<height) {
+    if (y<775) {
       //add (1,0) to move directions.
       dirs.add(0);
       dirs.add(1);
@@ -58,6 +63,7 @@ public class LivingRock extends Rock implements Moveable {
     x += dirs.get(r);
     y += dirs.get(r+1);
   }
+  
 }
 
 class Ball extends Thing implements Displayable, Moveable {
@@ -94,6 +100,7 @@ class Ball extends Thing implements Displayable, Moveable {
   }
 }
 
+<<<<<<< HEAD
 //class BasketBall extends Ball{}
 
 class FootBall extends Ball{ 
@@ -114,6 +121,12 @@ class FootBall extends Ball{
   }
   
 }
+=======
+/*
+class BasketBall extends Ball{}
+
+class FootBall extends Ball{}*/
+>>>>>>> 1312d0851c7fa44db679ce1f724ab3858201d90b
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
