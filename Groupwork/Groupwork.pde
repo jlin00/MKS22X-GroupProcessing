@@ -33,22 +33,22 @@ public class LivingRock extends Rock implements Moveable {
 
     ArrayList<Integer> dirs = new ArrayList<Integer>();
 
-    if (x!= 0) {
+    if (x> 0) {
       //add (-1,0) to move directions.
       dirs.add(-1);
       dirs.add(0);
     } 
-    if (x!=width) {
+    if (x<width) {
       //add (1,0) to move directions.
       dirs.add(1);
       dirs.add(0);
     }
-    if (y!=0) {
+    if (y>0) {
       //add (1,0) to move directions.
       dirs.add(0);
       dirs.add(-1);
     }
-    if (y!=height) {
+    if (y<height) {
       //add (1,0) to move directions.
       dirs.add(0);
       dirs.add(1);
@@ -83,11 +83,13 @@ class Ball extends Thing implements Displayable, Moveable {
   void move() {
     x += xspeed;
     y += yspeed;
-    if (x >= 1000 || x <= 0){
+    if (x >= 975 || x <= 25){
       xspeed *= -1;
+      xspeed += random(-2,2);
     }
-    if (y >= 800 || y <= 0){
+    if (y >= 775 || y <= 25){
       yspeed *= -1;
+      yspeed += random(-2,2);
     }
   }
 }
@@ -107,10 +109,11 @@ void setup() {
     Rock r = new Rock(50+random(width-100), 50+random(height)-100);
     thingsToDisplay.add(r);
   }
-
-  LivingRock m = new LivingRock(50+random(width-100), 50+random(height)-100);
-  thingsToDisplay.add(m);
-  thingsToMove.add(m);
+  for (int i=0;i<2;i++) {
+    LivingRock m = new LivingRock(50+random(width-100), 50+random(height)-100);
+    thingsToDisplay.add(m);
+    thingsToMove.add(m);
+  }
 }
 
 void draw() {
