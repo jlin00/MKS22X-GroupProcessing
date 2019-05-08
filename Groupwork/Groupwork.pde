@@ -96,6 +96,10 @@ class Ball extends Thing implements Displayable, Moveable {
   }
 }
 
+class BasketBall extends Ball{}
+
+class FootBall extends Ball{}
+
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
 

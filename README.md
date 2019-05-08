@@ -14,3 +14,13 @@ Devin + Jackie: Pair Programming for Ball
 - worked on colors for display() method
 - added bounce feature to move() method
 - randomized bounce (needs to be debugged) 
+<br>Lauren + Aryan: Pair Programming for Rock
+- fixed bugs in move() and got random movement to work
+- changed logic in move() - simplified.
+
+<br><b>5/8/19</b><br>
+Devin + Jackie: 
+
+Lauren + Aryan: 
+- added image code to rock's constructor- the image loads fast enough now and the rock moves.
+- 
