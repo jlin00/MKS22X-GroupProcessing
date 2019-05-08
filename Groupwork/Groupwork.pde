@@ -19,10 +19,11 @@ class Rock extends Thing implements Displayable {
     super(x, y);
     int n = (int)random(2);
     if (n==1) img = loadImage("rock.png");
-    else img = loadImage("rock1.png");
+    else img = loadImage("rock2.png");
+    img.resize(40,40);
   }
 
-  void display() { 
+  void display() {
     image(img, x,y);
   }
 }
@@ -99,9 +100,10 @@ class Ball extends Thing implements Displayable, Moveable {
   }
 }
 
+/*
 class BasketBall extends Ball{}
 
-class FootBall extends Ball{}
+class FootBall extends Ball{}*/
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
