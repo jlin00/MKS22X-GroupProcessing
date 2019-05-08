@@ -94,9 +94,26 @@ class Ball extends Thing implements Displayable, Moveable {
   }
 }
 
-class BasketBall extends Ball{}
+//class BasketBall extends Ball{}
 
-class FootBall extends Ball{}
+class FootBall extends Ball{ 
+  FootBall(float x, float y){
+    super(x,y);
+  }  
+  
+  void display(){
+     beginShape();
+     curveVertex(x,y);
+     curveVertex(x,y);
+     curveVertex(x+20,y-10);
+     curveVertex(x+40,y);
+     curveVertex(x+20,y+10);
+     curveVertex(x,y);
+     curveVertex(x,y);
+     endShape();
+  }
+  
+}
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
@@ -107,7 +124,7 @@ void setup() {
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
-    Ball b = new Ball(50+random(width-100), 50+random(height)-100);
+    Ball b = new FootBall(50+random(width-100), 50+random(height)-100);
     thingsToDisplay.add(b);
     thingsToMove.add(b);
     Rock r = new Rock(50+random(width-100), 50+random(height)-100);
@@ -127,6 +144,6 @@ void draw() {
     thing.display();
   }
   for (Moveable thing : thingsToMove) {
-    thing.move();
+    //thing.move();
   }
 }
