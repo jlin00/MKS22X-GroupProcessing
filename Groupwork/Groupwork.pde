@@ -33,22 +33,22 @@ public class LivingRock extends Rock implements Moveable {
 
     ArrayList<Integer> dirs = new ArrayList<Integer>();
 
-    if (x> 0) {
+    if (x > 25) {
       //add (-1,0) to move directions.
       dirs.add(-1);
       dirs.add(0);
     } 
-    if (x<width) {
+    if (x<975) {
       //add (1,0) to move directions.
       dirs.add(1);
       dirs.add(0);
     }
-    if (y>0) {
+    if (y>25) {
       //add (1,0) to move directions.
       dirs.add(0);
       dirs.add(-1);
     }
-    if (y<height) {
+    if (y<775) {
       //add (1,0) to move directions.
       dirs.add(0);
       dirs.add(1);
