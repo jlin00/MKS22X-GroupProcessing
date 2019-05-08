@@ -14,13 +14,16 @@ class Thing {
 }
 
 class Rock extends Thing implements Displayable {
+  PImage img;
   Rock(float x, float y) {
     super(x, y);
+    int n = (int)random(2);
+    if (n==1) img = loadImage("rock.png");
+    else img = loadImage("rock1.png");
   }
 
   void display() { 
-    fill(100, 200, 0);
-    ellipse(x, y, 50.0, 50.0);
+    image(img, x,y);
   }
 }
 
