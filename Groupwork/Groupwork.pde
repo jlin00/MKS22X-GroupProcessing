@@ -31,6 +31,7 @@ public class LivingRock extends Rock implements Moveable {
   void move() {
     //remove prev circle.
 
+    // RANDOM MOVEMENT
     ArrayList<Integer> dirs = new ArrayList<Integer>();
 
     if (x > 25) {
@@ -58,6 +59,7 @@ public class LivingRock extends Rock implements Moveable {
     x += dirs.get(r);
     y += dirs.get(r+1);
   }
+  
 }
 
 class Ball extends Thing implements Displayable, Moveable {
