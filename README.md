@@ -14,6 +14,6 @@ Devin + Jackie: Pair Programming for Ball
 - worked on colors for display() method
 - added bounce feature to move() method
 - randomized bounce (needs to be debugged) 
-Lauren + Aryan: Pair Programming for Rock
+\nLauren + Aryan: Pair Programming for Rock
 - fixed bugs in move() and got random movement to work
 - changed logic in move() - simplified.
