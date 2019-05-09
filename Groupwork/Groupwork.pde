@@ -128,6 +128,9 @@ ArrayList<Moveable> thingsToMove;
 
 void setup() {
   size(1000, 800);
+  PImage imgy = loadImage("rock.png");
+  PImage imgz = loadImage("rock.png");
+  
 
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
@@ -138,11 +141,12 @@ void setup() {
     Rock r = new Rock(50+random(width-100), 50+random(height)-100);
     thingsToDisplay.add(r);
   }
-  for (int i=0;i<2;i++) {
+  for (int i=0;i<3;i++) {
     LivingRock m = new LivingRock(50+random(width-100), 50+random(height)-100);
     thingsToDisplay.add(m);
     thingsToMove.add(m);
   }
+  
 }
 
 void draw() {
