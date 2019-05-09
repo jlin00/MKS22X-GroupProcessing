@@ -100,9 +100,6 @@ class Ball extends Thing implements Displayable, Moveable {
   }
 }
 
-<<<<<<< HEAD
-//class BasketBall extends Ball{}
-
 class FootBall extends Ball{ 
   FootBall(float x, float y){
     super(x,y);
@@ -121,12 +118,10 @@ class FootBall extends Ball{
   }
   
 }
-=======
+
 /*
 class BasketBall extends Ball{}
-
-class FootBall extends Ball{}*/
->>>>>>> 1312d0851c7fa44db679ce1f724ab3858201d90b
+*/
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
@@ -157,6 +152,6 @@ void draw() {
     thing.display();
   }
   for (Moveable thing : thingsToMove) {
-    //thing.move();
+    thing.move();
   }
 }
