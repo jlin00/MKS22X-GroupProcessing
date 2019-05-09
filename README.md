@@ -13,15 +13,20 @@ Devin + Jackie: Ball
 Devin + Jackie: Pair Programming for Ball
 - worked on colors for display() method
 - added bounce feature to move() method
-- randomized bounce (needs to be debugged)
-<br>Lauren + Aryan: Pair Programming for Rock
+- randomized bounce 
+<br>
+Lauren + Aryan: Pair Programming for Rock
 - fixed bugs in move() and got random movement to work
 - changed logic in move() - simplified.
 
 <br><b>5/8/19</b><br>
 Devin + Jackie:
 - Devin: worked on new BasketBall class, display() and move()
-- Jackie: worked on new FootBall class, display() and move()
+- Jackie: 
+  - created a free-form shape for new FootBall class
+  - added color to display method
+  - added a zigzag motion to object (referenced timer documentation for processing)
+  - randomized bouncing off the walls
 
 Lauren + Aryan:
 - added image code to rock's constructor- the image loads fast enough now and the rock moves.
