@@ -4,6 +4,9 @@ interface Displayable {
 interface Moveable {
   void move();
 }
+interface Collideable {
+  boolean isTouching(Thing other);
+}
 class Thing {
   float x, y;
 
