@@ -21,7 +21,9 @@ Lauren + Aryan: Pair Programming for Rock
 
 <br><b>5/8/19</b><br>
 Devin + Jackie:
-- Devin: worked on new BasketBall class, display() and move()
+- Devin: 
+  - worked on new BasketBall class, display() and move()
+  - Added gravity and ball bounce 
 - Jackie: 
   - created a free-form shape for new FootBall class
   - added color to display method
