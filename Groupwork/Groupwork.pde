@@ -69,20 +69,13 @@ public class LivingRock extends Rock implements Moveable {
 class Ball extends Thing implements Displayable, Moveable {
   float xspeed;
   float yspeed;
-  int color1;
-  int color2;
-  int color3;
   Ball(float x, float y) {
     super(x, y);
-    xspeed = random(-3,3);
-    yspeed = random(-3,3);
-    color1 = (int)random(255);
-    color2 = (int)random(255);
-    color3 = (int)random(255);
+    xspeed = random(-2,2);
+    yspeed = random(-2,2);
   }
 
   void display() {
-    fill(color1,color2,color3);
     ellipse(x,y,50,50);
   }
 
@@ -100,21 +93,60 @@ class Ball extends Thing implements Displayable, Moveable {
   }
 }
 
-class FootBall extends Ball{ 
+class FootBall extends Ball{
+  int savedTime; //implementing a timer, got help from documentation 
+  int totalTime; //time of each zigzag 
+  boolean vert; //horizontal or vertical zigzag 
+  color c = color(random(256), random(256), random(256)); //fill in random color once 
+  
   FootBall(float x, float y){
     super(x,y);
+    savedTime = millis(); //starts time 
+    totalTime = (int)random(300, 2000); //randomizes time of each zigzag
+    vert = ((int)random(2) == 1); //horizontal or vertical zigzag
   }  
   
-  void display(){
-     beginShape();
-     curveVertex(x,y);
-     curveVertex(x,y);
-     curveVertex(x+20,y-10);
-     curveVertex(x+40,y);
-     curveVertex(x+20,y+10);
-     curveVertex(x,y);
-     curveVertex(x,y);
-     endShape();
+  void display(){ //draws a football shape 
+    fill(c);
+    beginShape();
+    curveVertex(x,y);
+    curveVertex(x,y);
+    curveVertex(x+40,y-20);
+    curveVertex(x+80,y);
+    curveVertex(x+40,y+20);
+    curveVertex(x,y);
+    curveVertex(x,y);
+    endShape();
+  }
+  
+  void move(){
+    x += xspeed; //updates xcor
+    y += yspeed; //updates ycor
+    
+    //code for bouncing off sides 
+    if (x >= 920 || x <= 0){ 
+      xspeed *= -1;
+      xspeed += random(-1,1); //changes the angle slightly 
+      yspeed += random(-1,1);
+    }
+    if (y >= 780 || y <= 20){
+      yspeed *= -1;
+      xspeed += random(-1,1);
+      yspeed += random(-1,1); 
+    }
+    
+    int passedTime = millis() - savedTime; //keeps track of elapsed time 
+    if (passedTime > totalTime){ 
+      if (vert){ //vertical zigzag 
+        xspeed += random(-2,2); //randomizes zigzag a little 
+        xspeed *= -1;
+      }
+      else{ //horizontal zigzag 
+        yspeed += random(-2,2);
+        yspeed *= -1;
+      }
+      savedTime = millis(); //resets timer
+    }
   }
   
 }
