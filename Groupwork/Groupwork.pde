@@ -154,9 +154,40 @@ class FootBall extends Ball{
   
 }
 
-/*
-class BasketBall extends Ball{}
-*/
+class Basketball extends Ball {
+  PImage img;
+  float xVel;
+  float yVel;
+  float xAcc;
+  float yAcc;
+  float originalX;
+  float originalY;
+  Basketball (float x, float y) {
+    super(x, y);
+    img = loadImage("Basketball.png");
+    xVel = 0;
+    yVel = 1;
+    xAcc = 0;
+    yAcc = .05;
+  }
+  
+  void display() {
+    image(img, x, y, 30, 30);
+  }
+  
+  void move() {
+    x += xVel;
+    y += yVel;
+    yVel += yAcc;
+    if (y >= 775) {
+      yVel *= -1;
+      yAcc = yAcc * 1.5;
+      if (yAcc >= 2) {
+        yAcc = 0;
+      }
+    }
+  }
+}
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
@@ -171,6 +202,9 @@ void setup() {
   thingsToMove = new ArrayList<Moveable>();
   for (int i = 0; i < 10; i++) {
     Ball b = new FootBall(50+random(width-100), 50+random(height)-100);
+    Basketball bb = new Basketball(50+random(width-100), 50+random(height)-100);
+    thingsToDisplay.add(bb);
+    thingsToMove.add(bb);
     thingsToDisplay.add(b);
     thingsToMove.add(b);
     Rock r = new Rock(50+random(width-100), 50+random(height)-100);
