@@ -27,6 +27,8 @@ class Rock extends Thing implements Displayable {
   float yspeed;
   Rock(float x, float y, PImage img) {
     super(x, y);
+    xspeed = (int) (Math.random() * 4);
+    yspeed = (int) (Math.random() * 4);
     this.img = img;
   }
 
@@ -37,8 +39,10 @@ class Rock extends Thing implements Displayable {
 }
 
 public class LivingRock extends Rock implements Moveable {
+  int moveMode;
   LivingRock(float x, float y, PImage img) {
     super(x, y, img);
+    moveMode = (int) (Math.random() * 2); // 0 or 1.
   }
   
   void moveRandom() {
@@ -74,12 +78,21 @@ public class LivingRock extends Rock implements Moveable {
   }
   
   void moveStraight() {
-     
+     x+= xspeed;
+     y += yspeed;
+     //if it is out of bounds, negate y or x speed
+    if (x < 25 || x > 920) {
+      xspeed *= -1;
+    if (y< 25 || y > 775) {
+      yspeed *= -1;
+    }
+    }
   }
   
   void move() {
     //remove prev circle.
-
+    if (moveMode == 0) moveRandom();
+    if (moveMode == 1) moveStraight();
     
   }
   
