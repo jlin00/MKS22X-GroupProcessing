@@ -7,33 +7,36 @@ interface Moveable {
 interface Collideable {
   boolean isTouching(Thing other);
 }
-class Thing {
+class Thing implements Collideable{
   float x, y;
 
   Thing(float x, float y) {
     this.x = x;
     this.y = y;
   }
+  
+  boolean isTouching(Thing other){
+    return dist(x, y, other.x, other.y) <= 30;
+  }
+  
 }
 
 class Rock extends Thing implements Displayable {
   PImage img;
-  Rock(float x, float y) {
+  Rock(float x, float y, PImage img) {
     super(x, y);
-    int n = (int)random(2);
-    if (n==1) img = loadImage("rock.png");
-    else img = loadImage("rock2.png");
-    img.resize(40,40);
+    this.img = img;
   }
 
   void display() {
-    image(img, x,y);
+    noTint();
+    image(img, x, y, 40, 40);
   }
 }
 
 public class LivingRock extends Rock implements Moveable {
-  LivingRock(float x, float y) {
-    super(x, y);
+  LivingRock(float x, float y, PImage img) {
+    super(x, y, img);
   }
   void move() {
     //remove prev circle.
@@ -87,11 +90,11 @@ class Ball extends Thing implements Displayable, Moveable {
     y += yspeed;
     if (x >= 975 || x <= 25){
       xspeed *= -1;
-      xspeed += random(-2,2);
+      xspeed += random(-1,1);
     }
     if (y >= 775 || y <= 25){
       yspeed *= -1;
-      yspeed += random(-2,2);
+      yspeed += random(-1,1);
     }
   }
 }
@@ -109,14 +112,19 @@ class FootBall extends Ball{
     vert = ((int)random(2) == 1); //horizontal or vertical zigzag
   }  
   
-  void display(){ //draws a football shape 
+  void display(){ //draws a football shape
     fill(c);
+    for (Collideable c: collideables){
+      if (c.isTouching(this)){
+        fill(255,0,0);
+      }
+    }
     beginShape();
     curveVertex(x,y);
     curveVertex(x,y);
-    curveVertex(x+40,y-20);
-    curveVertex(x+80,y);
-    curveVertex(x+40,y+20);
+    curveVertex(x+15,y-8);
+    curveVertex(x+30,y);
+    curveVertex(x+15,y+8);
     curveVertex(x,y);
     curveVertex(x,y);
     endShape();
@@ -129,23 +137,23 @@ class FootBall extends Ball{
     //code for bouncing off sides 
     if (x >= 920 || x <= 0){ 
       xspeed *= -1;
-      xspeed += random(-1,1); //changes the angle slightly 
-      yspeed += random(-1,1);
+      xspeed += random(-0.5,0.5); //changes the angle slightly 
+      yspeed += random(-0.5,0.5);
     }
-    if (y >= 780 || y <= 20){
+    if (y >= 780 || y <= 8){
       yspeed *= -1;
-      xspeed += random(-1,1);
-      yspeed += random(-1,1); 
+      xspeed += random(-0.5,0.5);
+      yspeed += random(-0.5,0.5); 
     }
     
     int passedTime = millis() - savedTime; //keeps track of elapsed time 
     if (passedTime > totalTime){ 
       if (vert){ //vertical zigzag 
-        xspeed += random(-2,2); //randomizes zigzag a little 
+        xspeed += random(-0.2,0.2); //randomizes zigzag a little 
         xspeed *= -1;
       }
       else{ //horizontal zigzag 
-        yspeed += random(-2,2);
+        yspeed += random(-0.2,0.2);
         yspeed *= -1;
       }
       savedTime = millis(); //resets timer
@@ -155,16 +163,16 @@ class FootBall extends Ball{
 }
 
 class Basketball extends Ball {
-  PImage img;
   float xVel;
   float yVel;
   float xAcc;
   float yAcc;
   float originalX;
   float originalY;
-  Basketball (float x, float y) {
+  PImage img; 
+  Basketball (float x, float y, PImage img) {
     super(x, y);
-    img = loadImage("Basketball.png");
+    this.img = img;
     xVel = 0;
     yVel = 1;
     xAcc = 0;
@@ -172,6 +180,12 @@ class Basketball extends Ball {
   }
   
   void display() {
+    noTint();
+    for (Collideable c: collideables){
+      if (c.isTouching(this)){
+        tint(255, 0, 0);
+      }
+    }
     image(img, x, y, 30, 30);
   }
   
@@ -181,41 +195,61 @@ class Basketball extends Ball {
     yVel += yAcc;
     if (y >= 775) {
       yVel *= -1;
-      yAcc = yAcc * 1.5;
-      if (yAcc >= 2) {
-        yAcc = 0;
-      }
     }
   }
 }
 
 ArrayList<Displayable> thingsToDisplay;
 ArrayList<Moveable> thingsToMove;
+ArrayList<Collideable> collideables;
 
 void setup() {
   size(1000, 800);
-  PImage imgy = loadImage("rock.png");
-  PImage imgz = loadImage("rock.png");
+  PImage img1 = loadImage("rock.png");
+  PImage img2 = loadImage("rock2.png");
+  PImage img3 = loadImage("Basketball.png");
   
 
   thingsToDisplay = new ArrayList<Displayable>();
   thingsToMove = new ArrayList<Moveable>();
-  for (int i = 0; i < 10; i++) {
-    Ball b = new FootBall(50+random(width-100), 50+random(height)-100);
-    Basketball bb = new Basketball(50+random(width-100), 50+random(height)-100);
-    thingsToDisplay.add(bb);
-    thingsToMove.add(bb);
-    thingsToDisplay.add(b);
-    thingsToMove.add(b);
-    Rock r = new Rock(50+random(width-100), 50+random(height)-100);
-    thingsToDisplay.add(r);
-  }
-  for (int i=0;i<3;i++) {
-    LivingRock m = new LivingRock(50+random(width-100), 50+random(height)-100);
+  collideables = new ArrayList<Collideable>();
+  
+  for (int i=0;i<3;i++){
+    int num = (int)random(2);
+    LivingRock m;
+    if (num == 0){
+      m = new LivingRock(50+random(width-100), 50+random(height)-100, img1);
+    }
+    else{
+      m = new LivingRock(50+random(width-100), 50+random(height)-100, img2);
+    }
     thingsToDisplay.add(m);
     thingsToMove.add(m);
+    collideables.add(m);
   }
   
+  for (int i = 0; i < 10; i++) {
+    int num = (int)random(2);
+    Rock r;
+    if (num == 0){
+      r = new Rock(50+random(width-100), 50+random(height)-100, img1);
+    }
+    else{
+      r = new Rock(50+random(width-100), 50+random(height)-100, img2);
+    }
+    thingsToDisplay.add(r);
+    collideables.add(r);
+    
+    Ball b; 
+    if (i < 5){
+      b = new FootBall(50+random(width-100), 50+random(height)-100);
+    }
+    else{
+      b = new Basketball(50+random(width-100), 50+random(height)-100, img3);
+    }
+    thingsToDisplay.add(b);
+    thingsToMove.add(b);
+  }
 }
 
 void draw() {
