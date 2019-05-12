@@ -17,7 +17,7 @@ Devin + Jackie: Pair Programming for Ball
 <br>
 Lauren + Aryan: Pair Programming for Rock
 - fixed bugs in move() and got random movement to work
-- changed logic in move() - simplified.
+- changed logic in move() - simplified
 
 <br><b>5/8/19</b><br>
 Devin + Jackie:
@@ -27,9 +27,16 @@ Devin + Jackie:
 - Jackie: 
   - created a free-form shape for new FootBall class
   - added color to display method
-  - added a zigzag motion to object (referenced timer documentation for processing)
+  - added a zigzag motion to object (referenced documentation for timer)
   - randomized bouncing off the walls
 
 Lauren + Aryan:
 - added image code to rock's constructor- the image loads fast enough now and the rock moves.
 - // spent a whole period on this because the code was lost on github
+
+<br><b>5/11/19</b><br>
+- Jackie: 
+  - implemented Collideable interface and added color changing to balls (referenced documentation for tint)
+  - updated movement methods for ball classes (just modified the numbers for speed after testing)
+  - eliminated superfluous code and added comments 
+  - moved image loading to setup instead of constructor 
