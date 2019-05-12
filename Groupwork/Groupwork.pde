@@ -22,7 +22,9 @@ class Thing implements Collideable{
 }
 
 class Rock extends Thing implements Displayable {
-  PImage img; //will only be loaded once in setup 
+  PImage img; //will only be loaded once in setup
+  float xspeed;
+  float yspeed;
   Rock(float x, float y, PImage img) {
     super(x, y);
     this.img = img;
@@ -38,9 +40,8 @@ public class LivingRock extends Rock implements Moveable {
   LivingRock(float x, float y, PImage img) {
     super(x, y, img);
   }
-  void move() {
-    //remove prev circle.
-
+  
+  void moveRandom() {
     // RANDOM MOVEMENT
     ArrayList<Integer> dirs = new ArrayList<Integer>();
 
@@ -49,7 +50,7 @@ public class LivingRock extends Rock implements Moveable {
       dirs.add(-1);
       dirs.add(0);
     } 
-    if (x<975) {
+    if (x<920) {
       //add (1,0) to move directions.
       dirs.add(1);
       dirs.add(0);
@@ -66,8 +67,20 @@ public class LivingRock extends Rock implements Moveable {
     }
 
     int r = (int) (Math.random() * (dirs.size()/2));
+    r *= 2;// r and r+1 are indices for move coordinates
+    //System.out.println(dirs);
     x += dirs.get(r);
     y += dirs.get(r+1);
+  }
+  
+  void moveStraight() {
+     
+  }
+  
+  void move() {
+    //remove prev circle.
+
+    
   }
   
 }
