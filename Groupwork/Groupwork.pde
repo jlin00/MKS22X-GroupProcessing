@@ -41,17 +41,6 @@ class Rock extends Thing implements Displayable {
   void display() { //loads image
     noTint();
     image(img, x, y, 40, 40);
-    fill(r,g,b);
-    //change colors gradually
-    if (r < 255) r ++;
-    else if (g < 255) g++;
-    else if (b < 255) b ++;
-    //if black, go to white
-    if (r == 255 && b == 255 && g == 255) {
-      r = 0; b = 0; g = 0;
-    }
-    ellipse(x+13, y+7, 4, 4);
-    ellipse(x+22, y+7, 4, 4);
   }
 }
 
@@ -110,7 +99,24 @@ public class LivingRock extends Rock implements Moveable {
     //remove prev circle.
     if (moveMode == 0) moveRandom();
     if (moveMode == 1) moveStraight();
-    
+  }
+  
+  void display(){
+    super.display();
+    fill(255);
+    ellipse(x+12,y+6,10,10);
+    ellipse(x+26,y+6,10,10);
+    fill(r,g,b);
+    //change colors gradually
+    if (r < 255) r ++;
+    else if (g < 255) g++;
+    else if (b < 255) b ++;
+    //if black, go to white
+    if (r == 255 && b == 255 && g == 255) {
+      r = 0; b = 0; g = 0;
+    }
+    ellipse(x+13, y+7, 4, 4);
+    ellipse(x+27, y+7, 4, 4);
   }
   
 }
