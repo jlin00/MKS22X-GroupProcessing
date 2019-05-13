@@ -25,16 +25,25 @@ class Rock extends Thing implements Displayable {
   PImage img; //will only be loaded once in setup
   float xspeed;
   float yspeed;
+  int r; 
+  int g; 
+  int b;
   Rock(float x, float y, PImage img) {
     super(x, y);
     xspeed = (int) (Math.random() * 4);
     yspeed = (int) (Math.random() * 4);
+    r = (int) (Math.random() * 256);
+    g = (int) (Math.random() * 256);
+    b = (int) (Math.random() * 256);
     this.img = img;
   }
 
   void display() { //loads image
     noTint();
     image(img, x, y, 40, 40);
+    fill(0,255,0);
+    ellipse(x+13, y+7, 4, 4);
+    ellipse(x+22, y+7, 4, 4);
   }
 }
 
@@ -228,7 +237,7 @@ void setup() {
   thingsToMove = new ArrayList<Moveable>();
   collideables = new ArrayList<Collideable>();
   
-  for (int i=0;i<10;i++){
+  for (int i=0;i<3;i++){
     int num = (int)random(2); //randomizes which image is chosen for display 
     LivingRock m;
     if (num == 0){
