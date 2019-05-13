@@ -13,7 +13,7 @@ Devin + Jackie: Ball
 Devin + Jackie: Pair Programming for Ball
 - worked on colors for display() method
 - added bounce feature to move() method
-- randomized bounce 
+- randomized bounce
 <br>
 Lauren + Aryan: Pair Programming for Rock
 - fixed bugs in move() and got random movement to work
@@ -21,10 +21,10 @@ Lauren + Aryan: Pair Programming for Rock
 
 <br><b>5/8/19</b><br>
 Devin + Jackie:
-- Devin: 
+- Devin:
   - worked on new BasketBall class, display() and move()
-  - Added gravity and ball bounce 
-- Jackie: 
+  - Added gravity and ball bounce
+- Jackie:
   - created a free-form shape for new FootBall class
   - added color to display method
   - added a zigzag motion to object (referenced documentation for timer)
@@ -35,8 +35,13 @@ Lauren + Aryan:
 - // spent a whole period on this because the code was lost on github
 
 <br><b>5/11/19</b><br>
-- Jackie: 
+- Aryan:
+  - added Collideable interface to implement color change for balls; add to rocks
+  - updated movement methods for living rocks; still a bit stagnant
+  - added comments
+
+- Jackie:
   - implemented Collideable interface and added color changing to balls (referenced documentation for tint)
   - updated movement methods for ball classes (just modified the numbers for speed after testing)
-  - eliminated superfluous code and added comments 
-  - moved image loading to setup instead of constructor 
+  - eliminated superfluous code and added comments
+  - moved image loading to setup instead of constructor
