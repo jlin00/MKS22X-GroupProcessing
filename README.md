@@ -1,4 +1,4 @@
-# MKS22X-GroupProcessing
+c# MKS22X-GroupProcessing
 
 <b>5/6/19</b><br>
 Aryan + Lauren: Rock
@@ -45,3 +45,10 @@ Lauren + Aryan:
   - updated movement methods for ball classes (just modified the numbers for speed after testing)
   - eliminated superfluous code and added comments
   - moved image loading to setup instead of constructor
+  
+  <br><b>5/12/19</b><br>
+  - Lauren: 
+    - fixed random move() so that rock doesn't go off the screen
+    - added another move() that bounces off sides of screen at varying speeds
+    - added eyes to living rock, experimented to find the right location
+    - added code to make eyes start out random, then change color gradually
