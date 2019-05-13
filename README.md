@@ -31,8 +31,8 @@ Devin + Jackie:
   - randomized bouncing off the walls
 
 Lauren + Aryan:
-- added image code to rock's constructor- the image loads fast enough now and the rock moves.
-- // spent a whole period on this because the code was lost on github
+  - added image code to rock's constructor- the image loads fast enough now and the rock moves.
+  - // spent a whole period on this because the code was lost on github
 
 <br><b>5/11/19</b><br>
 - Aryan:
@@ -46,9 +46,9 @@ Lauren + Aryan:
   - eliminated superfluous code and added comments
   - moved image loading to setup instead of constructor
   
-  <br><b>5/12/19</b><br>
-  - Lauren: 
-    - fixed random move() so that rock doesn't go off the screen
-    - added another move() that bounces off sides of screen at varying speeds
-    - added eyes to living rock, experimented to find the right location
-    - added code to make eyes start out random, then change color gradually
+<br><b>5/12/19</b><br>
+- Lauren:    
+  - fixed random move() so that rock doesn't go off the screen
+  - added another move() that bounces off sides of screen at varying speeds
+  - added eyes to living rock, experimented to find the right locatio
+  - added code to make eyes start out random, then change color gradually
