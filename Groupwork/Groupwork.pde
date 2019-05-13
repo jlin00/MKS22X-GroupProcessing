@@ -49,22 +49,22 @@ public class LivingRock extends Rock implements Moveable {
     // RANDOM MOVEMENT
     ArrayList<Integer> dirs = new ArrayList<Integer>();
 
-    if (x > 25) {
+    if (x > 5) {
       //add (-1,0) to move directions.
       dirs.add(-1);
       dirs.add(0);
     } 
-    if (x<920) {
+    if (x+5<width) {
       //add (1,0) to move directions.
       dirs.add(1);
       dirs.add(0);
     }
-    if (y>25) {
+    if (y>5) {
       //add (1,0) to move directions.
       dirs.add(0);
       dirs.add(-1);
     }
-    if (y<775) {
+    if (y+5<height) {
       //add (1,0) to move directions.
       dirs.add(0);
       dirs.add(1);
@@ -78,15 +78,15 @@ public class LivingRock extends Rock implements Moveable {
   }
   
   void moveStraight() {
-     x+= xspeed;
-     y += yspeed;
      //if it is out of bounds, negate y or x speed
-    if (x < 25 || x > 920) {
+    if (x+xspeed < 5 || x+xspeed > (width-8)) {
       xspeed *= -1;
-    if (y< 25 || y > 775) {
+    }
+    if (y+yspeed < 5 || y+yspeed > (height-8)) {
       yspeed *= -1;
     }
-    }
+         x+= xspeed;
+     y += yspeed;
   }
   
   void move() {
@@ -228,7 +228,7 @@ void setup() {
   thingsToMove = new ArrayList<Moveable>();
   collideables = new ArrayList<Collideable>();
   
-  for (int i=0;i<3;i++){
+  for (int i=0;i<10;i++){
     int num = (int)random(2); //randomizes which image is chosen for display 
     LivingRock m;
     if (num == 0){
